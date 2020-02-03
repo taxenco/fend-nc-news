@@ -1,0 +1,37 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+}
+
+.projects {
+  display: flex;
+  justify-content: center;
+}
+
+.email {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.emailIcon {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.aboutIcon {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+}
