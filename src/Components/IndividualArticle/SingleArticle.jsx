@@ -25,6 +25,12 @@ export default function SingleArticle({ article }) {
             <strong>{article.title}</strong>
           </Card.Title>
           <Card.Text>{article.body}</Card.Text>
+          <div className={styles.author}>
+            <Card.Text>
+              <strong>Author: </strong>
+              {article.author}
+            </Card.Text>
+          </div>
           <div className={styles.info}>
             <Card.Text>
               <strong>Number of Comments: </strong>
@@ -42,7 +48,6 @@ export default function SingleArticle({ article }) {
               <strong>Date: </strong>
               {article.created_at}
             </Card.Text>
-            >
           </div>
         </Card.Body>
         <Card.Header className={styles.footer}>

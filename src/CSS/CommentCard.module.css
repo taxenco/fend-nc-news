@@ -1,0 +1,19 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.like {
+  display: flex;
+  justify-content: center;
+}
+
+.dislike {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

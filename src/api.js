@@ -32,6 +32,12 @@ export const getArticleById = id => {
     return data.article;
   });
 };
+export const getCommentsById = id => {
+  return axios.get(`${baseURL}/${id}/comments`).then(({ data }) => {
+    console.log(data);
+    return data.comments;
+  });
+};
 
 // export const deleteArticleById = id => {
 //   return axios.delete(`${baseURL}/${id}`).then(({ response }) => {});
