@@ -26,17 +26,15 @@ export default function NavBar() {
               variant="dark"
               size="md"
               drop="down"
-              hoover
+              hoover="true"
             >
-              <Dropdown.Item eventKey="1" href="/football">
-                Football
-              </Dropdown.Item>
+              <Dropdown.Item href="/articles/football">Football</Dropdown.Item>
               <NavDropdown.Divider />
-              <Dropdown.Item eventKey="2" href="/coding">
+              <Dropdown.Item eventKey="2" href="/articles/coding">
                 Coding
               </Dropdown.Item>
               <NavDropdown.Divider />
-              <Dropdown.Item eventKey="3" href="/cooking">
+              <Dropdown.Item eventKey="3" href="/articles/cooking">
                 Cooking
               </Dropdown.Item>
             </DropdownButton>

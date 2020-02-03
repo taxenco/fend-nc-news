@@ -23,7 +23,9 @@ export default function ArticleCard({ article }) {
             </strong>
           </Card.Header>
           <Card.Body className={styles.body}>
-            <Card.Title>{article.title}</Card.Title>
+            <Card.Title>
+              <strong>{article.title}</strong>
+            </Card.Title>
           </Card.Body>
           <div className={styles.text}>
             <Card.Text>
@@ -40,7 +42,7 @@ export default function ArticleCard({ article }) {
             </Card.Text>
           </div>
           <div className={styles.button}>
-            <Link to={`/articles/${article.article_id}`}>
+            <Link to={`/articles/article/${article.article_id}`}>
               <GoEye size={30} />
             </Link>
           </div>

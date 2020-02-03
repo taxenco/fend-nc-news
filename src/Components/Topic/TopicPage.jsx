@@ -1,28 +1,27 @@
 import React, { Component } from "react";
 import * as api from "../../api";
-import OrderArticles from "./OrderArticles";
-import SortArticles from "./SortArticles";
-import ArticleList from "./ArticleList";
-
-import { Spinner } from "react-bootstrap";
+import OrderArticles from "../Articles/OrderArticles";
+import SortArticles from "../Articles/SortArticles";
+import ArticleList from "../Articles/ArticleList";
 import style from "../../CSS/ArticleList.module.css";
-
-export default class ArticlePage extends Component {
+import { Spinner } from "react-bootstrap";
+export default class TopicPage extends Component {
   state = {
     articles: [],
     isLoading: true,
     order: "asc",
     sorted_by: "created_at"
   };
-  fetchArticles = () => {
+  fetchArticle = () => {
     const { order, sorted_by } = this.state;
-    api.getArticles(order, sorted_by).then(articles => {
+    const { topic } = this.props;
+    api.getArticleByTopic(topic, order, sorted_by).then(articles => {
       this.setState({ articles, isLoading: false });
     });
   };
 
   componentDidMount() {
-    this.fetchArticles();
+    this.fetchArticle();
   }
 
   handlingOrder = order => {
@@ -35,7 +34,7 @@ export default class ArticlePage extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { order, sorted_by } = this.state;
     if (order !== prevState.order || sorted_by !== prevState.sorted_by) {
-      this.fetchArticles();
+      this.fetchArticle();
     }
   }
   render() {
