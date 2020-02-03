@@ -5,6 +5,7 @@ import SortArticles from "../Articles/SortArticles";
 import ArticleList from "../Articles/ArticleList";
 import style from "../../CSS/ArticleList.module.css";
 import { Spinner } from "react-bootstrap";
+
 export default class TopicPage extends Component {
   state = {
     articles: [],

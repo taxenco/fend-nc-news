@@ -1,0 +1,39 @@
+.card {
+  padding: 100px;
+}
+.topic {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.like {
+  display: flex;
+  justify-content: center;
+}
+
+.dislike {
+  display: flex;
+  justify-content: center;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+}

@@ -29,7 +29,10 @@ export const getArticleByTopic = (topic, order, sort_by) => {
 
 export const getArticleById = id => {
   return axios.get(`${baseURL}/${id}`).then(({ data }) => {
-    console.log(data)
     return data.article;
   });
 };
+
+// export const deleteArticleById = id => {
+//   return axios.delete(`${baseURL}/${id}`).then(({ response }) => {});
+// }; !!!! Comments

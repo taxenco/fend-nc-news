@@ -7,6 +7,8 @@ import {
   NavDropdown,
   Button
 } from "react-bootstrap";
+import { FiLogIn } from "react-icons/fi";
+import { FaHome } from "react-icons/fa";
 
 export default function NavBar() {
   return (
@@ -17,7 +19,7 @@ export default function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Button variant="dark" href="/">
-              Home
+              {<FaHome />}
             </Button>
             <DropdownButton
               alignRight
@@ -42,7 +44,7 @@ export default function NavBar() {
           <Nav>
             <DropdownButton
               alignRight
-              title="Log In"
+              title={<FiLogIn />}
               id="dropdown-menu-align-right"
               variant="dark"
               size="md"
