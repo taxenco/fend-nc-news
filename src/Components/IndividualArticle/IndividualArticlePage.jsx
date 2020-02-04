@@ -81,7 +81,16 @@ export default class IndividualArticlePage extends Component {
     });
   };
 
+  removeComment = id => {
+    const { comments } = this.state;
+    console.log(comments);
+    api.deleteCommentById(id);
+    const newComments = comments.filter(comment => comment.comment_id !== id);
+    console.log(newComments);
+    this.setState({ comments: newComments });
+  };
   componentDidMount() {
+    //
     this.fetchArticleById();
     this.fetchCommentsById();
   }
@@ -124,6 +133,7 @@ export default class IndividualArticlePage extends Component {
             inc_votes_comments={inc_votes_comments}
             toggleUpLike={toggleUpLike}
             toggleDownLike={toggleDownLike}
+            removeComment={this.removeComment}
           />
         </div>
       );

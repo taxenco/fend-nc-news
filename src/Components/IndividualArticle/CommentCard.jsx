@@ -8,11 +8,11 @@ export default function CommentCard({
   comment,
   upVoteComments,
   downVoteComments,
+  removeComment,
   inc_votes_comments,
   toggleUpLike,
   toggleDownLike
 }) {
-  console.log(inc_votes_comments);
   return (
     <ol className={styles.card}>
       <Toast>
@@ -40,7 +40,16 @@ export default function CommentCard({
               <FaRegThumbsUp size={30} />
             )}
           </div>
-          <div className={styles.bin}>{<GoTrashcan size={30} />}</div>
+          <div className={styles.bin}>
+            {
+              <GoTrashcan
+                size={30}
+                onClick={() => {
+                  removeComment(comment.comment_id);
+                }}
+              />
+            }
+          </div>
           <div className={styles.dislike}>
             {toggleDownLike ? (
               <FaRegThumbsDown

@@ -8,7 +8,8 @@ export default function Comments({
   downVoteComments,
   inc_votes_comments,
   toggleUpLike,
-  toggleDownLike
+  toggleDownLike,
+  removeComment
 }) {
   return (
     <div>
@@ -23,6 +24,7 @@ export default function Comments({
               inc_votes_comments={inc_votes_comments}
               toggleUpLike={toggleUpLike}
               toggleDownLike={toggleDownLike}
+              removeComment={removeComment}
             />
           );
         })}
