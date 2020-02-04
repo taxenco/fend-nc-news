@@ -1,6 +1,6 @@
 .footer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .like {
@@ -23,5 +23,17 @@
 .card {
   display: flex;
   justify-content: center;
+  margin: 20px;
+}
+
+.bin {
+  display: flex;
+  justify-content: center;
   padding: 20px;
+}
+
+.votes {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }

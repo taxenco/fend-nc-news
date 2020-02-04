@@ -10,7 +10,12 @@ export default class IndividualArticlePage extends Component {
     isLoading: true,
     isLoadingComment: true,
     comments: [],
-    inc_votes: 0
+    inc_votes: 0,
+    inc_votes_comments: 0,
+    toggleUpVote: true,
+    toggleDownVote: true,
+    toggleUpLike: true,
+    toggleDownLike: true
   };
 
   fetchArticleById = () => {
@@ -28,11 +33,12 @@ export default class IndividualArticlePage extends Component {
 
   upVote = () => {
     const { id } = this.props;
-    const inc_votes = 1;
-    api.patchCommentById(id, inc_votes).then(() => {
+    const votes = 1;
+    api.patchArticleById(id, votes).then(() => {
       this.setState(prevState => {
         return {
-          inc_votes: prevState.inc_votes + 1
+          inc_votes: prevState.inc_votes + 1,
+          toggleUpVote: false
         };
       });
     });
@@ -41,10 +47,35 @@ export default class IndividualArticlePage extends Component {
   downVote = () => {
     const { id } = this.props;
     const inc_votes = -1;
+    api.patchArticleById(id, inc_votes).then(() => {
+      this.setState(prevState => {
+        return {
+          inc_votes: prevState.inc_votes - 1,
+          toggleDownVote: false
+        };
+      });
+    });
+  };
+
+  upVoteComments = id => {
+    const inc_votes = 1;
     api.patchCommentById(id, inc_votes).then(() => {
       this.setState(prevState => {
         return {
-          inc_votes: prevState.inc_votes - 1
+          inc_votes: prevState.inc_votes + 1,
+          toggleUpVote: false
+        };
+      });
+    });
+  };
+
+  downVoteComments = id => {
+    const inc_votes = -1;
+    api.patchArticleById(id, inc_votes).then(() => {
+      this.setState(prevState => {
+        return {
+          inc_votes: prevState.inc_votes - 1,
+          toggleDownVote: false
         };
       });
     });
@@ -61,9 +92,13 @@ export default class IndividualArticlePage extends Component {
       isLoadingComment,
       article,
       comments,
-      inc_votes
+      inc_votes,
+      inc_votes_comments,
+      toggleUpVote,
+      toggleDownVote,
+      toggleUpLike,
+      toggleDownLike
     } = this.state;
-
     if (isLoading && isLoadingComment) {
       return (
         <div>
@@ -78,9 +113,18 @@ export default class IndividualArticlePage extends Component {
             upVote={this.upVote}
             downVote={this.downVote}
             inc_votes={inc_votes}
+            toggleUpVote={toggleUpVote}
+            toggleDownVote={toggleDownVote}
           />
           ;
-          <Comments comments={comments} />
+          <Comments
+            comments={comments}
+            upVoteComments={this.upVoteComments}
+            downVoteComments={this.downVoteComments}
+            inc_votes_comments={inc_votes_comments}
+            toggleUpLike={toggleUpLike}
+            toggleDownLike={toggleDownLike}
+          />
         </div>
       );
     }

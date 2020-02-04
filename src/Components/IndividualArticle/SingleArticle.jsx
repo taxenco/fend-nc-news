@@ -10,7 +10,9 @@ export default function SingleArticle({
   article,
   upVote,
   downVote,
-  inc_votes
+  inc_votes,
+  toggleUpVote,
+  toggleDownVote
 }) {
   return (
     <div className={styles.card}>
@@ -57,28 +59,32 @@ export default function SingleArticle({
         </Card.Body>
         <Card.Header className={styles.footer}>
           <div className={styles.like}>
-            {
+            {toggleUpVote ? (
               <FaRegThumbsUp
                 size={30}
                 onClick={() => {
                   upVote();
                 }}
               />
-            }
+            ) : (
+              <FaRegThumbsUp size={30} />
+            )}
           </div>
 
           <div className={styles.home}>
             <Link to="/articles">{<MdHome size={30} />}</Link>
           </div>
           <div className={styles.dislike}>
-            {
+            {toggleDownVote ? (
               <FaRegThumbsDown
                 size={30}
                 onClick={() => {
                   downVote();
                 }}
               />
-            }
+            ) : (
+              <FaRegThumbsDown size={30} />
+            )}
           </div>
         </Card.Header>
       </Card>
