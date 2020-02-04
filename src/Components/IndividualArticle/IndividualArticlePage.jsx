@@ -62,8 +62,8 @@ export default class IndividualArticlePage extends Component {
     api.patchCommentById(id, inc_votes).then(() => {
       this.setState(prevState => {
         return {
-          inc_votes: prevState.inc_votes + 1,
-          toggleUpVote: false
+          inc_votes_comments: prevState.inc_votes_comments + 1,
+          toggleUpLike: false
         };
       });
     });
@@ -71,11 +71,11 @@ export default class IndividualArticlePage extends Component {
 
   downVoteComments = id => {
     const inc_votes = -1;
-    api.patchArticleById(id, inc_votes).then(() => {
+    api.patchCommentById(id, inc_votes).then(() => {
       this.setState(prevState => {
         return {
-          inc_votes: prevState.inc_votes - 1,
-          toggleDownVote: false
+          inc_votes_comments: prevState.inc_votes_comments - 1,
+          toggleDownLike: false
         };
       });
     });

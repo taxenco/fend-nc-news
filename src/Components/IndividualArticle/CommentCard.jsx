@@ -12,6 +12,7 @@ export default function CommentCard({
   toggleUpLike,
   toggleDownLike
 }) {
+  console.log(inc_votes_comments);
   return (
     <ol className={styles.card}>
       <Toast>
@@ -23,22 +24,35 @@ export default function CommentCard({
         <div className={styles.votes}>
           <Toast.Body>
             <strong>Votes: </strong>
-            {comment.votes}
+            {comment.votes + inc_votes_comments}
           </Toast.Body>
         </div>
         <div className={styles.footer}>
           <div className={styles.like}>
-            {
+            {toggleUpLike ? (
               <FaRegThumbsUp
                 size={30}
                 onClick={() => {
                   upVoteComments(comment.comment_id);
                 }}
               />
-            }
+            ) : (
+              <FaRegThumbsUp size={30} />
+            )}
           </div>
           <div className={styles.bin}>{<GoTrashcan size={30} />}</div>
-          <div className={styles.dislike}>{<FaRegThumbsDown size={30} />}</div>
+          <div className={styles.dislike}>
+            {toggleDownLike ? (
+              <FaRegThumbsDown
+                size={30}
+                onClick={() => {
+                  downVoteComments(comment.comment_id);
+                }}
+              />
+            ) : (
+              <FaRegThumbsDown size={30} />
+            )}
+          </div>
         </div>
       </Toast>
     </ol>

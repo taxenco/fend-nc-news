@@ -10,7 +10,6 @@ export default function Comments({
   toggleUpLike,
   toggleDownLike
 }) {
-  console.log(comments, upVoteComments, downVoteComments, inc_votes_comments);
   return (
     <div>
       <ul className={styles.main}>

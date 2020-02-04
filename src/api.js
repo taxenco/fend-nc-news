@@ -1,8 +1,8 @@
 import axios from "axios";
-const baseURL = "https://carlosbeltran-nc-news.herokuapp.com/api/articles";
+const baseURL = "https://carlosbeltran-nc-news.herokuapp.com/api";
 export const getArticles = (order, sort_by) => {
   return axios
-    .get(`${baseURL}`, {
+    .get(`${baseURL}/articles`, {
       params: {
         order: order,
         sort_by: sort_by
@@ -15,7 +15,7 @@ export const getArticles = (order, sort_by) => {
 
 export const getArticleByTopic = (topic, order, sort_by) => {
   return axios
-    .get(`${baseURL}`, {
+    .get(`${baseURL}/articles`, {
       params: {
         topic: topic,
         order: order,
@@ -28,19 +28,19 @@ export const getArticleByTopic = (topic, order, sort_by) => {
 };
 
 export const getArticleById = id => {
-  return axios.get(`${baseURL}/articles${id}`).then(({ data }) => {
+  return axios.get(`${baseURL}/articles/${id}`).then(({ data }) => {
     return data.article;
   });
 };
 export const getCommentsById = id => {
-  return axios.get(`${baseURL}/${id}/comments`).then(({ data }) => {
+  return axios.get(`${baseURL}/articles/${id}/comments`).then(({ data }) => {
     return data.comments;
   });
 };
 
 export const patchArticleById = (id, inc_votes) => {
   return axios
-    .patch(`${baseURL}/${id}`, {
+    .patch(`${baseURL}/articles/${id}`, {
       inc_votes: inc_votes
     })
     .then(({ data }) => {
