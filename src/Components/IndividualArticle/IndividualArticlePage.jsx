@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../../api";
 import SingleArticle from "./SingleArticle";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 import { Spinner } from "react-bootstrap";
 
 export default class IndividualArticlePage extends Component {
@@ -83,10 +84,8 @@ export default class IndividualArticlePage extends Component {
 
   removeComment = id => {
     const { comments } = this.state;
-    console.log(comments);
     api.deleteCommentById(id);
     const newComments = comments.filter(comment => comment.comment_id !== id);
-    console.log(newComments);
     this.setState({ comments: newComments });
   };
   componentDidMount() {
@@ -116,7 +115,7 @@ export default class IndividualArticlePage extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="article-page-container">
           <SingleArticle
             article={article}
             upVote={this.upVote}
@@ -125,7 +124,7 @@ export default class IndividualArticlePage extends Component {
             toggleUpVote={toggleUpVote}
             toggleDownVote={toggleDownVote}
           />
-          ;
+          <PostComment />
           <Comments
             comments={comments}
             upVoteComments={this.upVoteComments}
