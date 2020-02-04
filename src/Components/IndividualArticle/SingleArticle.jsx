@@ -6,7 +6,12 @@ import { GiMeal } from "react-icons/gi";
 import styles from "../../CSS/SingleArticle.module.css";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import { Link } from "@reach/router";
-export default function SingleArticle({ article }) {
+export default function SingleArticle({
+  article,
+  upVote,
+  downVote,
+  inc_votes
+}) {
   return (
     <div className={styles.card}>
       <Card>
@@ -40,7 +45,7 @@ export default function SingleArticle({ article }) {
           <div className={styles.info}>
             <Card.Text>
               <strong>Number of votes: </strong>
-              {article.votes}
+              {article.votes + inc_votes}
             </Card.Text>
           </div>
           <div className={styles.info}>
@@ -51,12 +56,30 @@ export default function SingleArticle({ article }) {
           </div>
         </Card.Body>
         <Card.Header className={styles.footer}>
-          <div className={styles.like}>{<FaRegThumbsUp size={30} />}</div>
+          <div className={styles.like}>
+            {
+              <FaRegThumbsUp
+                size={30}
+                onClick={() => {
+                  upVote();
+                }}
+              />
+            }
+          </div>
 
           <div className={styles.home}>
             <Link to="/articles">{<MdHome size={30} />}</Link>
           </div>
-          <div className={styles.dislike}>{<FaRegThumbsDown size={30} />}</div>
+          <div className={styles.dislike}>
+            {
+              <FaRegThumbsDown
+                size={30}
+                onClick={() => {
+                  downVote();
+                }}
+              />
+            }
+          </div>
         </Card.Header>
       </Card>
     </div>

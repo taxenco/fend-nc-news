@@ -34,11 +34,22 @@ export const getArticleById = id => {
 };
 export const getCommentsById = id => {
   return axios.get(`${baseURL}/${id}/comments`).then(({ data }) => {
-    console.log(data);
     return data.comments;
   });
 };
 
+export const patchCommentById = (id, inc_votes) => {
+  console.log(id, inc_votes);
+  return axios
+    .patch(`${baseURL}/${id}`, {
+      inc_votes: inc_votes
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data.article;
+    });
+};
+
 // export const deleteArticleById = id => {
 //   return axios.delete(`${baseURL}/${id}`).then(({ response }) => {});
-// }; !!!! Comments
+// };

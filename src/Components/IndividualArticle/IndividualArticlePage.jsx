@@ -9,7 +9,8 @@ export default class IndividualArticlePage extends Component {
     article: [],
     isLoading: true,
     isLoadingComment: true,
-    comments: []
+    comments: [],
+    inc_votes: 0
   };
 
   fetchArticleById = () => {
@@ -25,13 +26,43 @@ export default class IndividualArticlePage extends Component {
     });
   };
 
+  upVote = () => {
+    const { id } = this.props;
+    const inc_votes = 1;
+    api.patchCommentById(id, inc_votes).then(() => {
+      this.setState(prevState => {
+        return {
+          inc_votes: prevState.inc_votes + 1
+        };
+      });
+    });
+  };
+
+  downVote = () => {
+    const { id } = this.props;
+    const inc_votes = -1;
+    api.patchCommentById(id, inc_votes).then(() => {
+      this.setState(prevState => {
+        return {
+          inc_votes: prevState.inc_votes - 1
+        };
+      });
+    });
+  };
+
   componentDidMount() {
     this.fetchArticleById();
     this.fetchCommentsById();
   }
 
   render() {
-    const { isLoading, isLoadingComment, article, comments } = this.state;
+    const {
+      isLoading,
+      isLoadingComment,
+      article,
+      comments,
+      inc_votes
+    } = this.state;
 
     if (isLoading && isLoadingComment) {
       return (
@@ -42,7 +73,13 @@ export default class IndividualArticlePage extends Component {
     } else {
       return (
         <div>
-          <SingleArticle article={article} />;
+          <SingleArticle
+            article={article}
+            upVote={this.upVote}
+            downVote={this.downVote}
+            inc_votes={inc_votes}
+          />
+          ;
           <Comments comments={comments} />
         </div>
       );

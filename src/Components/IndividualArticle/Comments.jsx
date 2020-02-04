@@ -4,7 +4,7 @@ import styles from "../../CSS/CommentCard.module.css";
 
 export default function Comments({ comments }) {
   return (
-    <div className={styles.main}>
+    <div>
       <ul className={styles.main}>
         {comments.map((comment, index) => {
           return <CommentCard key={index} comment={comment} />;

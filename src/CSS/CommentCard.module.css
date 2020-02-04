@@ -6,14 +6,22 @@
 .like {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 .dislike {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 .main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
