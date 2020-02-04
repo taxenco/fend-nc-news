@@ -3,11 +3,25 @@ import { Form, Button } from "react-bootstrap";
 import styles from "../../CSS/PostComment.module.css";
 
 export default class PostComment extends Component {
-  state = {};
+  state = {
+    comment: ""
+  };
+  handleChange = event => {
+    this.setState({ comment: event.target.value });
+  };
+
+  handleSubmit = event => {
+    console.log("clicked");
+    event.preventDefault();
+    const { comment } = this.state;
+    const user = "jessjelly";
+    this.props.addComment(user, comment);
+    this.setState({ comment: "" });
+  };
   render() {
     return (
       <div className={styles.form}>
-        <Form>
+        <form onSubmit={this.handleSubmit}>
           <Form.Label className={styles.textarea}>POST A COMMENT</Form.Label>
           <Form.Control
             as="textarea"
@@ -15,11 +29,12 @@ export default class PostComment extends Component {
             columns="100"
             required
             placeholder="Share your opinion...."
+            onChange={this.handleChange}
           />
           <div className={styles.button}>
-            <Button>Post</Button>
+            <Button type="submit">Post</Button>
           </div>
-        </Form>
+        </form>
       </div>
     );
   }

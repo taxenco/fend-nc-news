@@ -88,6 +88,13 @@ export default class IndividualArticlePage extends Component {
     const newComments = comments.filter(comment => comment.comment_id !== id);
     this.setState({ comments: newComments });
   };
+  postComment = (user, body) => {
+    const { article_id } = this.state.article;
+    api.postComment(article_id, { user, body }).then(comment => {
+      console.log(comment);
+    });
+  };
+
   componentDidMount() {
     //
     this.fetchArticleById();
@@ -124,7 +131,7 @@ export default class IndividualArticlePage extends Component {
             toggleUpVote={toggleUpVote}
             toggleDownVote={toggleDownVote}
           />
-          <PostComment />
+          <PostComment addComment={this.addComment} />
           <Comments
             comments={comments}
             upVoteComments={this.upVoteComments}

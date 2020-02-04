@@ -58,6 +58,16 @@ export const patchCommentById = (id, inc_votes) => {
 };
 
 export const deleteCommentById = id => {
-  console.log(id);
   return axios.delete(`${baseURL}/comments/${id}`).then(({ response }) => {});
+};
+
+export const postComment = (article_id, { user, body }) => {
+  return axios
+    .post(`${baseURL}/articles/${article_id}/comments`, {
+      username: user,
+      body: body
+    })
+    .then(({ data }) => {
+      console.log(data);
+    });
 };
