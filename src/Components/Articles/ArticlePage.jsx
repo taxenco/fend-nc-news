@@ -16,9 +16,12 @@ export default class ArticlePage extends Component {
   };
   fetchArticles = () => {
     const { order, sorted_by } = this.state;
-    api.getArticles(order, sorted_by).then(articles => {
-      this.setState({ articles, isLoading: false });
-    });
+    api
+      .getArticles(order, sorted_by)
+      .then(articles => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(error => this.setState({ error: error.response }));
   };
 
   componentDidMount() {

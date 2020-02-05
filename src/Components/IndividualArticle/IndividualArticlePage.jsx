@@ -81,16 +81,25 @@ export default class IndividualArticlePage extends Component {
 
   removeComment = id => {
     const { comments } = this.state;
-    api.deleteCommentById(id);
-    const newComments = comments.filter(comment => comment.comment_id !== id);
-    this.setState({ comments: newComments });
+    api
+      .deleteCommentById(id)
+      .then(() => {
+        const newComments = comments.filter(
+          comment => comment.comment_id !== id
+        );
+        this.setState({ comments: newComments });
+      })
+      .catch(error => this.setState({ error: error.response }));
   };
   addComment = (user, body) => {
     const { article_id } = this.state.article;
     const { comments } = this.state;
-    api.postComment(article_id, { user, body }).then(comment => {
-      this.setState({ comments: [comment, ...comments] });
-    });
+    api
+      .postComment(article_id, { user, body })
+      .then(comment => {
+        this.setState({ comments: [comment, ...comments] });
+      })
+      .catch(error => this.setState({ error: error.response }));
   };
 
   componentDidMount() {
