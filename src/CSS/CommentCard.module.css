@@ -37,3 +37,9 @@
   justify-content: center;
   margin: 20px;
 }
+
+.error {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

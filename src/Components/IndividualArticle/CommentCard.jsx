@@ -1,5 +1,5 @@
 import React from "react";
-import { Toast } from "react-bootstrap";
+import { Toast, Alert, Spinner } from "react-bootstrap";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import { GoTrashcan } from "react-icons/go";
 import styles from "../../CSS/CommentCard.module.css";
@@ -11,7 +11,10 @@ export default function CommentCard({
   removeComment,
   inc_votes_comments,
   toggleUpLike,
-  toggleDownLike
+  toggleDownLike,
+  errorLikes,
+  errorLoading,
+  handingErrorLoading
 }) {
   return (
     <ol className={styles.card}>
@@ -62,6 +65,20 @@ export default function CommentCard({
               <FaRegThumbsDown size={30} />
             )}
           </div>
+        </div>
+        <div className={styles.error}>
+          {errorLoading && <Spinner animation="border" />}
+          {errorLikes && (
+            <Alert
+              variant="danger"
+              dismissible
+              onClose={() => {
+                handingErrorLoading();
+              }}
+            >
+              Error when updating information, please try again{" "}
+            </Alert>
+          )}
         </div>
       </Toast>
     </ol>

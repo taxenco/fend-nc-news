@@ -9,7 +9,10 @@ export default function Comments({
   inc_votes_comments,
   toggleUpLike,
   toggleDownLike,
-  removeComment
+  removeComment,
+  errorLikes,
+  errorLoading,
+  handingErrorLoading
 }) {
   return (
     <div>
@@ -25,6 +28,9 @@ export default function Comments({
               toggleUpLike={toggleUpLike}
               toggleDownLike={toggleDownLike}
               removeComment={removeComment}
+              errorLikes={errorLikes}
+              errorLoading={errorLoading}
+              handingErrorLoading={handingErrorLoading}
             />
           );
         })}

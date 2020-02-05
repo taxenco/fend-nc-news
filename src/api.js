@@ -49,7 +49,7 @@ export const patchArticleById = (id, inc_votes) => {
 };
 export const patchCommentById = (id, inc_votes) => {
   return axios
-    .patch(`${baseURL}/comments/${id}`, {
+    .patch(`${baseURL}/commentxs/${id}`, {
       inc_votes: inc_votes
     })
     .then(({ data }) => {
