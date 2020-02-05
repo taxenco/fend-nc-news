@@ -1,0 +1,19 @@
+.error {
+  display: grid;
+  grid-template-rows: 4fr 1fr 1fr;
+}
+
+.picture {
+  margin-left: 30%;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.home {
+  margin-left: 48%;
+  margin-top: 10px;
+}

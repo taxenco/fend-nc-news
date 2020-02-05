@@ -11,7 +11,6 @@ export default class PostComment extends Component {
   };
 
   handleSubmit = event => {
-    console.log("clicked");
     event.preventDefault();
     const { comment } = this.state;
     const user = "jessjelly";

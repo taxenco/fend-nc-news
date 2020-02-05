@@ -90,9 +90,7 @@ export default class IndividualArticlePage extends Component {
   };
   postComment = (user, body) => {
     const { article_id } = this.state.article;
-    api.postComment(article_id, { user, body }).then(comment => {
-      console.log(comment);
-    });
+    api.postComment(article_id, { user, body }).then(comment => {});
   };
 
   componentDidMount() {
