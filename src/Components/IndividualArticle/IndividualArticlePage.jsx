@@ -56,28 +56,26 @@ export default class IndividualArticlePage extends Component {
       .catch(errorLikes => {
         this.setState({ errorLikes: true, errorLoading: false });
       });
-    // .catch(errorLikes => {
-    //   console.log(errorLikes, "hello");
-    //   this.setState(prevState => {
-    //     return {
-    //       errorLikes: true,
-    //       inc_votes: prevState.inc_votes - 1
-    //     };
-    //   });
-    // });
   };
 
   downVote = () => {
     const { id } = this.props;
     const inc_votes = -1;
-    api.patchArticleById(id, inc_votes).then(() => {
-      this.setState(prevState => {
-        return {
-          inc_votes: prevState.inc_votes - 1,
-          toggleDownVote: false
-        };
+    this.setState({ errorLoading: true });
+    api
+      .patchArticleById(id, inc_votes)
+      .then(() => {
+        this.setState(prevState => {
+          return {
+            inc_votes: prevState.inc_votes - 1,
+            toggleDownVote: false,
+            errorLoading: true
+          };
+        });
+      })
+      .catch(errorLikes => {
+        this.setState({ errorLikes: true, errorLoading: false });
       });
-    });
   };
 
   upVoteComments = id => {
@@ -123,7 +121,9 @@ export default class IndividualArticlePage extends Component {
     this.fetchArticleById();
     this.fetchCommentsById();
   }
-
+  handingErrorLoading = () => {
+    this.setState({ errorLikes: false });
+  };
   render() {
     const {
       isLoading,
@@ -168,6 +168,7 @@ export default class IndividualArticlePage extends Component {
             toggleDownVote={toggleDownVote}
             errorLikes={errorLikes}
             errorLoading={errorLoading}
+            handingErrorLoading={this.handingErrorLoading}
           />
           <PostComment addComment={this.addComment} />
           <Comments

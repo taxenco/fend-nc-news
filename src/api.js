@@ -40,12 +40,12 @@ export const getCommentsById = id => {
 
 export const patchArticleById = (id, inc_votes) => {
   return axios
-    .patch(`${baseURL}/articlesef/${id}`, {
+    .patch(`${baseURL}/articles/${id}`, {
       inc_votes: inc_votes
     })
     .then(({ data }) => {
       return data.article;
-    })
+    });
 };
 export const patchCommentById = (id, inc_votes) => {
   return axios

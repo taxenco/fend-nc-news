@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Spinner } from "react-bootstrap";
+import { Card, Spinner, Alert } from "react-bootstrap";
 import { IoMdFootball } from "react-icons/io";
 import { MdCode, MdHome } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
@@ -14,7 +14,8 @@ export default function SingleArticle({
   toggleUpVote,
   toggleDownVote,
   errorLikes,
-  errorLoading
+  errorLoading,
+  handingErrorLoading
 }) {
   console.log(errorLikes);
   return (
@@ -95,7 +96,19 @@ export default function SingleArticle({
         </Card.Header>
       </Card>
       <div className={styles.error}>
-        <h6>{errorLikes && "Error when updating please try again"}</h6>
+        {errorLikes && (
+          <Alert
+            variant="danger"
+            onClose={() => {
+              handingErrorLoading();
+            }}
+            dismissible
+          >
+            <Alert.Heading>
+              Error when updating information, please try again
+            </Alert.Heading>
+          </Alert>
+        )}
       </div>
     </div>
   );
