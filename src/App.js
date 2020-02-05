@@ -15,10 +15,11 @@ function App() {
       <NavBar />
       <Header />
       <Router>
+        <ArticlePage path="/" />
         <ArticlePage path="/articles" />
         <TopicPage path="/articles/:topic" />
         <IndividualArticlePage path="/articles/article/:id" />
-        <Error default  msg={'URL'}/>
+        <Error default error={{ status: "404", data: "Page not found" }} />
       </Router>
       <Footer />
     </main>

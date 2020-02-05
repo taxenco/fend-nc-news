@@ -4,7 +4,7 @@ import SingleArticle from "./SingleArticle";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
 import { Spinner } from "react-bootstrap";
-
+import Error from "../Error/Error";
 export default class IndividualArticlePage extends Component {
   state = {
     article: [],
@@ -16,14 +16,18 @@ export default class IndividualArticlePage extends Component {
     toggleUpVote: true,
     toggleDownVote: true,
     toggleUpLike: true,
-    toggleDownLike: true
+    toggleDownLike: true,
+    error: null
   };
 
   fetchArticleById = () => {
     const { id } = this.props;
-    api.getArticleById(id).then(article => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .getArticleById(id)
+      .then(article => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch(error => this.setState({ error: error.response }));
   };
   fetchCommentsById = () => {
     const { id } = this.props;
@@ -88,9 +92,12 @@ export default class IndividualArticlePage extends Component {
     const newComments = comments.filter(comment => comment.comment_id !== id);
     this.setState({ comments: newComments });
   };
-  postComment = (user, body) => {
+  addComment = (user, body) => {
     const { article_id } = this.state.article;
-    api.postComment(article_id, { user, body }).then(comment => {});
+    const { comments } = this.state;
+    api.postComment(article_id, { user, body }).then(comment => {
+      this.setState({ comments: [comment, ...comments] });
+    });
   };
 
   componentDidMount() {
@@ -110,9 +117,19 @@ export default class IndividualArticlePage extends Component {
       toggleUpVote,
       toggleDownVote,
       toggleUpLike,
-      toggleDownLike
+      toggleDownLike,
+      error
     } = this.state;
-    if (isLoading && isLoadingComment) {
+    if (error) {
+      return (
+        <Error
+          error={{
+            status: this.state.error.status,
+            data: this.state.error.request.statusText
+          }}
+        />
+      );
+    } else if (isLoading && isLoadingComment) {
       return (
         <div>
           <Spinner animation="grow" size="lg" />

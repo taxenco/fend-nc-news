@@ -18,7 +18,7 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Button variant="dark" href="/">
+            <Button variant="dark" href="/articles">
               {<FaHome />}
             </Button>
             <DropdownButton

@@ -1,18 +1,19 @@
 import React from "react";
-import giphy from "../../IMG/giphy.gif";
+import errorGif from "../../IMG/errorGif.gif";
 import styles from "../../CSS/Error.module.css";
 import { FaHome } from "react-icons/fa";
 import { Link } from "@reach/router";
 
-export default function Error({ msg }) {
+export default function Error({ error }) {
+  console.log(error.data);
   return (
     <div className={styles.error}>
-      <img src={giphy} alt="error" className={styles.picture} />
+      <img src={errorGif} alt="error" className={styles.picture} />
       <h4 className={styles.message}>
-        {msg} :{window.location.href} not found
+        {error.status} : {error.data}
       </h4>
-      <Link to={`/articles`}>
-        <FaHome size={40} className={styles.home} href={"/articles"} />
+      <Link to={"/articles"}>
+        <FaHome size={40} className={styles.home} />
       </Link>
       ;{" "}
     </div>
