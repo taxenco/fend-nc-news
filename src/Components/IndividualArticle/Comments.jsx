@@ -10,8 +10,8 @@ export default function Comments({
   toggleUpLike,
   toggleDownLike,
   removeComment,
+  errorLoadingComment,
   errorLikes,
-  errorLoading,
   handingErrorLoading
 }) {
   return (
@@ -28,9 +28,6 @@ export default function Comments({
               toggleUpLike={toggleUpLike}
               toggleDownLike={toggleDownLike}
               removeComment={removeComment}
-              errorLikes={errorLikes}
-              errorLoading={errorLoading}
-              handingErrorLoading={handingErrorLoading}
             />
           );
         })}

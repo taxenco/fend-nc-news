@@ -17,7 +17,6 @@ export default function SingleArticle({
   errorLoading,
   handingErrorLoading
 }) {
-  console.log(errorLikes);
   return (
     <div className={styles.card}>
       <Card>

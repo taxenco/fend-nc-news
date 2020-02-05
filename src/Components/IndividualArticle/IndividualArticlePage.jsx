@@ -9,10 +9,8 @@ export default class IndividualArticlePage extends Component {
   state = {
     article: [],
     isLoading: true,
-    isLoadingComment: true,
     comments: [],
     inc_votes: 0,
-    inc_votes_comments: 0,
     toggleUpVote: true,
     toggleDownVote: true,
     toggleUpLike: true,
@@ -72,48 +70,7 @@ export default class IndividualArticlePage extends Component {
           return {
             inc_votes: prevState.inc_votes - 1,
             toggleDownVote: false,
-            errorLoading: true
-          };
-        });
-      })
-      .catch(errorLikes => {
-        this.setState({ errorLikes: true, errorLoading: false });
-      });
-  };
-
-  upVoteComments = id => {
-    const inc_votes = 1;
-    this.setState({ errorLoading: true });
-    api
-      .patchCommentById(id, inc_votes)
-      .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes_comments: prevState.inc_votes_comments + 1,
-            toggleUpLike: false,
             errorLoading: false
-          };
-        });
-      })
-      .catch(errorLikes => {
-        this.setState({
-          errorLikes: true,
-          errorLoading: false,
-          errorLoading: false
-        });
-      });
-  };
-
-  downVoteComments = id => {
-    const inc_votes = -1;
-    this.setState({ errorLoading: true });
-    api
-      .patchCommentById(id, inc_votes)
-      .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes_comments: prevState.inc_votes_comments - 1,
-            toggleDownLike: false
           };
         });
       })
@@ -178,7 +135,6 @@ export default class IndividualArticlePage extends Component {
     } else {
       return (
         <div className="article-page-container">
-          {console.log(errorLikes)}
           <SingleArticle
             article={article}
             upVote={this.upVote}
@@ -193,15 +149,10 @@ export default class IndividualArticlePage extends Component {
           <PostComment addComment={this.addComment} />
           <Comments
             comments={comments}
-            upVoteComments={this.upVoteComments}
-            downVoteComments={this.downVoteComments}
             inc_votes_comments={inc_votes_comments}
             toggleUpLike={toggleUpLike}
             toggleDownLike={toggleDownLike}
             removeComment={this.removeComment}
-            errorLikes={errorLikes}
-            errorLoading={errorLoading}
-            handingErrorLoading={this.handingErrorLoading}
           />
         </div>
       );
