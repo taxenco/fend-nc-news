@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Spinner } from "react-bootstrap";
 import { IoMdFootball } from "react-icons/io";
 import { MdCode, MdHome } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
@@ -12,8 +12,11 @@ export default function SingleArticle({
   downVote,
   inc_votes,
   toggleUpVote,
-  toggleDownVote
+  toggleDownVote,
+  errorLikes,
+  errorLoading
 }) {
+  console.log(errorLikes);
   return (
     <div className={styles.card}>
       <Card>
@@ -56,6 +59,9 @@ export default function SingleArticle({
               {article.created_at}
             </Card.Text>
           </div>
+          <div className={styles.loading}>
+            {errorLoading && <Spinner animation="border" />}
+          </div>
         </Card.Body>
         <Card.Header className={styles.footer}>
           <div className={styles.like}>
@@ -88,6 +94,9 @@ export default function SingleArticle({
           </div>
         </Card.Header>
       </Card>
+      <div className={styles.error}>
+        <h6>{errorLikes && "Error when updating please try again"}</h6>
+      </div>
     </div>
   );
 }

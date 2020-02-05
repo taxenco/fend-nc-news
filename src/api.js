@@ -30,7 +30,7 @@ export const getArticleByTopic = (topic, order, sort_by) => {
 export const getArticleById = id => {
   return axios.get(`${baseURL}/articles/${id}`).then(({ data }) => {
     return data.article;
-  })
+  });
 };
 export const getCommentsById = id => {
   return axios.get(`${baseURL}/articles/${id}/comments`).then(({ data }) => {
@@ -40,12 +40,12 @@ export const getCommentsById = id => {
 
 export const patchArticleById = (id, inc_votes) => {
   return axios
-    .patch(`${baseURL}/articles/${id}`, {
+    .patch(`${baseURL}/articlesef/${id}`, {
       inc_votes: inc_votes
     })
     .then(({ data }) => {
       return data.article;
-    });
+    })
 };
 export const patchCommentById = (id, inc_votes) => {
   return axios

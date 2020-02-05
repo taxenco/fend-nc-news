@@ -17,7 +17,9 @@ export default class IndividualArticlePage extends Component {
     toggleDownVote: true,
     toggleUpLike: true,
     toggleDownLike: true,
-    error: null
+    error: null,
+    errorLikes: null,
+    errorLoading: false
   };
 
   fetchArticleById = () => {
@@ -39,14 +41,30 @@ export default class IndividualArticlePage extends Component {
   upVote = () => {
     const { id } = this.props;
     const votes = 1;
-    api.patchArticleById(id, votes).then(() => {
-      this.setState(prevState => {
-        return {
-          inc_votes: prevState.inc_votes + 1,
-          toggleUpVote: false
-        };
+    this.setState({ errorLoading: true });
+    api
+      .patchArticleById(id, votes)
+      .then(() => {
+        this.setState(prevState => {
+          return {
+            inc_votes: prevState.inc_votes + 1,
+            toggleUpVote: false,
+            errorLoading: false
+          };
+        });
+      })
+      .catch(errorLikes => {
+        this.setState({ errorLikes: true, errorLoading: false });
       });
-    });
+    // .catch(errorLikes => {
+    //   console.log(errorLikes, "hello");
+    //   this.setState(prevState => {
+    //     return {
+    //       errorLikes: true,
+    //       inc_votes: prevState.inc_votes - 1
+    //     };
+    //   });
+    // });
   };
 
   downVote = () => {
@@ -118,7 +136,9 @@ export default class IndividualArticlePage extends Component {
       toggleDownVote,
       toggleUpLike,
       toggleDownLike,
-      error
+      error,
+      errorLikes,
+      errorLoading
     } = this.state;
     if (error) {
       return (
@@ -138,6 +158,7 @@ export default class IndividualArticlePage extends Component {
     } else {
       return (
         <div className="article-page-container">
+          {console.log(errorLikes)}
           <SingleArticle
             article={article}
             upVote={this.upVote}
@@ -145,6 +166,8 @@ export default class IndividualArticlePage extends Component {
             inc_votes={inc_votes}
             toggleUpVote={toggleUpVote}
             toggleDownVote={toggleDownVote}
+            errorLikes={errorLikes}
+            errorLoading={errorLoading}
           />
           <PostComment addComment={this.addComment} />
           <Comments
