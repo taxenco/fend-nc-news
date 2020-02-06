@@ -117,11 +117,8 @@ export default class IndividualArticlePage extends Component {
       article,
       comments,
       inc_votes,
-      inc_votes_comments,
       toggleUpVote,
       toggleDownVote,
-      toggleUpLike,
-      toggleDownLike,
       error,
       errorLikes,
       errorLoading
@@ -157,10 +154,7 @@ export default class IndividualArticlePage extends Component {
           />
           <PostComment addComment={this.addComment} />
           <Comments
-            comments={comments}
-            inc_votes_comments={inc_votes_comments}
-            toggleUpLike={toggleUpLike}
-            toggleDownLike={toggleDownLike}
+            comments={comments}  
             removeComment={this.removeComment}
           />
         </div>

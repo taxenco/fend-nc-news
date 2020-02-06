@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Toast, Alert, Spinner } from "react-bootstrap";
-import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import { GoTrashcan } from "react-icons/go";
+import UpVotes from "./UpVotes";
+import DownVotes from "./DownVote";
 import styles from "../../CSS/CommentCard.module.css";
 import * as api from "../../api";
 const DATE_OPTIONS = {
@@ -16,20 +17,23 @@ export default class CommentCard extends Component {
     errorLikesComment: false,
     errorLoadingComment: false,
     inc_votes_comments: 0,
-    toggleUpLike: true,
-    toggleDownLike: true
+    toggleLike: null
   };
 
-  upVoteComments = id => {
-    const inc_votes = 1;
-    this.setState({ errorLoadingComment: true });
+  voteComment = (num, disable) => {
+    const { inc_votes_comments } = this.state;
+    const { comment_id } = this.props.comment;
+    this.setState({
+      inc_votes_comments: inc_votes_comments + num,
+      errorLoadingComment: true,
+      toggleLike: disable
+    });
     api
-      .patchCommentById(id, inc_votes)
+      .patchCommentById(comment_id, num)
       .then(() => {
         this.setState(prevState => {
           return {
-            inc_votes_comments: prevState.inc_votes_comments + 1,
-            toggleUpLike: false,
+            inc_votes_comments: prevState.inc_votes_comments + num,
             errorLoadingComment: false
           };
         });
@@ -42,35 +46,17 @@ export default class CommentCard extends Component {
       });
   };
 
-  downVoteComments = id => {
-    const inc_votes = -1;
-    this.setState({ errorLoadingComment: true });
-    api
-      .patchCommentById(id, inc_votes)
-      .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes_comments: prevState.inc_votes_comments - 1,
-            toggleDownLike: false,
-            errorLoadingComment: false
-          };
-        });
-      })
-      .catch(errorLikes => {
-        this.setState({ errorLoadingComment: false, errorLikesComment: true });
-      });
-  };
   handingErrorLoading = () => {
     this.setState({ errorLikesComment: false });
   };
+
   render() {
     const { comment, removeComment } = this.props;
     const {
       errorLoadingComment,
       errorLikesComment,
       inc_votes_comments,
-      toggleUpLike,
-      toggleDownLike
+      toggleLike
     } = this.state;
     return (
       <ol className={styles.card}>
@@ -93,16 +79,7 @@ export default class CommentCard extends Component {
           </div>
           <div className={styles.footer}>
             <div className={styles.like}>
-              {toggleUpLike ? (
-                <FaRegThumbsUp
-                  size={30}
-                  onClick={() => {
-                    this.upVoteComments(comment.comment_id);
-                  }}
-                />
-              ) : (
-                <FaRegThumbsUp size={30} />
-              )}
+              <UpVotes voteComment={this.voteComment} toggleLike={toggleLike} />
             </div>
             <div className={styles.bin}>
               {
@@ -115,16 +92,10 @@ export default class CommentCard extends Component {
               }
             </div>
             <div className={styles.dislike}>
-              {toggleDownLike ? (
-                <FaRegThumbsDown
-                  size={30}
-                  onClick={() => {
-                    this.downVoteComments(comment.comment_id);
-                  }}
-                />
-              ) : (
-                <FaRegThumbsDown size={30} />
-              )}
+              <DownVotes
+                voteComment={this.voteComment}
+                toggleLike={toggleLike}
+              />
             </div>
           </div>
           <div className={styles.error}>
