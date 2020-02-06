@@ -1,14 +1,16 @@
 import axios from "axios";
 const baseURL = "https://carlosbeltran-nc-news.herokuapp.com/api";
-export const getArticles = (order, sort_by) => {
+export const getArticles = (order, sort_by, page) => {
   return axios
     .get(`${baseURL}/articles`, {
       params: {
         order: order,
-        sort_by: sort_by
+        sort_by: sort_by,
+        page: page
       }
     })
     .then(({ data }) => {
+      console.log(data);
       return data.articles;
     });
 };

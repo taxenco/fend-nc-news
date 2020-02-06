@@ -8,7 +8,7 @@ import { GoEye } from "react-icons/go";
 import { Link } from "@reach/router";
 export default function ArticleCard({ article }) {
   return (
-    <div>
+    <section>
       <ol>
         <Card bg="light" style={{ width: "18rem" }}>
           <Card.Header className={styles.header}>
@@ -48,6 +48,6 @@ export default function ArticleCard({ article }) {
           </div>
         </Card>
       </ol>
-    </div>
+    </section>
   );
 }

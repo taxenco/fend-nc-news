@@ -6,6 +6,7 @@ import ArticleList from "./ArticleList";
 import Error from "../Error/Error";
 import { Spinner } from "react-bootstrap";
 import style from "../../CSS/ArticleList.module.css";
+// import ShowPages from "./ShowPages";
 
 export default class ArticlePage extends Component {
   state = {
@@ -45,12 +46,14 @@ export default class ArticlePage extends Component {
   render() {
     const { articles, isLoading, error } = this.state;
     if (error) {
-    return  <Error
-        error={{
-          status: this.state.error.status,
-          data: this.state.error.request.statusText
-        }}
-      />;
+      return (
+        <Error
+          error={{
+            status: this.state.error.status,
+            data: this.state.error.request.statusText
+          }}
+        />
+      );
     } else if (isLoading) {
       return (
         <div className={style.spinnerList}>
@@ -67,7 +70,7 @@ export default class ArticlePage extends Component {
               <SortArticles handlingSort={this.handlingSort} />
             </div>
           </div>
-          <ArticleList articles={articles} />;
+          <ArticleList articles={articles} />;{/* <ShowPages /> */}
         </div>
       );
     }
