@@ -50,13 +50,27 @@ export default function NavBar() {
               size="md"
               drop="down"
             >
-              <Dropdown.Item eventKey="1">User 1</Dropdown.Item>
+              <Dropdown.Item eventKey="4">jessjelly </Dropdown.Item>
               <NavDropdown.Divider />
-              <Dropdown.Item eventKey="2">User 2</Dropdown.Item>
+
+              <Dropdown.Item eventKey="1">tickle122 </Dropdown.Item>
               <NavDropdown.Divider />
-              <Dropdown.Item eventKey="3">User 3</Dropdown.Item>
+
+              <Dropdown.Item eventKey="2">grumpy19</Dropdown.Item>
               <NavDropdown.Divider />
-              <Dropdown.Item eventKey="4">User 4</Dropdown.Item>
+
+              <Dropdown.Item eventKey="3">happyamy2016</Dropdown.Item>
+              <NavDropdown.Divider />
+
+              <Dropdown.Item eventKey="4">cooljmessy</Dropdown.Item>
+              <NavDropdown.Divider />
+
+              <Dropdown.Item eventKey="4">weegembump</Dropdown.Item>
+              <NavDropdown.Divider />
+              <p>
+                {" "}
+                <strong> Default :</strong> jessjelly{" "}
+              </p>
             </DropdownButton>
           </Nav>
         </Navbar.Collapse>
