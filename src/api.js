@@ -10,7 +10,6 @@ export const getArticles = (order, sort_by, page) => {
       }
     })
     .then(({ data }) => {
-      console.log(data);
       return data.articles;
     });
 };
