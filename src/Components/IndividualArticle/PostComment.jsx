@@ -28,6 +28,7 @@ export default class PostComment extends Component {
             columns="100"
             required
             placeholder="Share your opinion...."
+            value={this.state.comment}
             onChange={this.handleChange}
           />
           <div className={styles.button}>

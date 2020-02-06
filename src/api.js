@@ -58,7 +58,7 @@ export const patchCommentById = (id, inc_votes) => {
 };
 
 export const deleteCommentById = id => {
-  return axios.delete(`${baseURL}/comdments/${id}`).then(({ response }) => {});
+  return axios.delete(`${baseURL}/comments/${id}`).then(({ response }) => {});
 };
 
 export const postComment = (article_id, { user, body }) => {
