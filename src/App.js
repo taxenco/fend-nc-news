@@ -6,6 +6,7 @@ import ArticlePage from "./Components/Articles/ArticlePage";
 import TopicPage from "./Components/Topic/TopicPage";
 import IndividualArticlePage from "./Components/IndividualArticle/IndividualArticlePage";
 import Error from "./Components/Error/Error";
+import Welcome from "./Components/Welcome/Welcome";
 import { Router } from "@reach/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +15,7 @@ export default class App extends Component {
     author: "jessjelly"
   };
   changingUser = user => {
-    this.setState({ student: user });
+    this.setState({ author: user });
   };
   render() {
     const { author } = this.state;
@@ -22,6 +23,7 @@ export default class App extends Component {
       <main>
         <NavBar changingUser={this.changingUser} user={this.state.author} />
         <Header />
+        <Welcome author={author} />
         <Router>
           <ArticlePage path="/" />
           <ArticlePage path="/articles" />

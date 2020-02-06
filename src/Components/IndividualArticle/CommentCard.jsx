@@ -49,7 +49,6 @@ export default class CommentCard extends Component {
   };
 
   render() {
-    // console.log(this.props.author);
     const { comment, removeComment, author } = this.props;
     const {
       errorLoadingComment,

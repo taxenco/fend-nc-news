@@ -13,11 +13,13 @@ export default class PostComment extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { comment } = this.state;
-    const user = "jessjelly";
+    const { author } = this.props;
+    const user = author;
     this.props.addComment(user, comment);
     this.setState({ comment: "" });
   };
   render() {
+    console.log(this.props.author);
     return (
       <div className={styles.form}>
         <form onSubmit={this.handleSubmit}>
