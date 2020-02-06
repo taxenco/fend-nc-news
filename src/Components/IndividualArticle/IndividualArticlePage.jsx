@@ -10,14 +10,7 @@ export default class IndividualArticlePage extends Component {
     article: [],
     isLoading: true,
     comments: [],
-    inc_votes: 0,
-    toggleUpVote: true,
-    toggleDownVote: true,
-    toggleUpLike: true,
-    toggleDownLike: true,
-    error: null,
-    errorLikes: null,
-    errorLoading: false
+    error: null
   };
 
   fetchArticleById = () => {
@@ -37,46 +30,6 @@ export default class IndividualArticlePage extends Component {
         this.setState({ comments, isLoading: false });
       })
       .catch(error => this.setState({ error: error.response }));
-  };
-
-  upVote = () => {
-    const { id } = this.props;
-    const votes = 1;
-    this.setState({ errorLoading: true });
-    api
-      .patchArticleById(id, votes)
-      .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes: prevState.inc_votes + 1,
-            toggleUpVote: false,
-            errorLoading: false
-          };
-        });
-      })
-      .catch(errorLikes => {
-        this.setState({ errorLikes: true, errorLoading: false });
-      });
-  };
-
-  downVote = () => {
-    const { id } = this.props;
-    const inc_votes = -1;
-    this.setState({ errorLoading: true });
-    api
-      .patchArticleById(id, inc_votes)
-      .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes: prevState.inc_votes - 1,
-            toggleDownVote: false,
-            errorLoading: false
-          };
-        });
-      })
-      .catch(errorLikes => {
-        this.setState({ errorLikes: true, errorLoading: false });
-      });
   };
 
   removeComment = id => {
@@ -111,18 +64,7 @@ export default class IndividualArticlePage extends Component {
     this.setState({ errorLikes: false });
   };
   render() {
-    const {
-      isLoading,
-      isLoadingComment,
-      article,
-      comments,
-      inc_votes,
-      toggleUpVote,
-      toggleDownVote,
-      error,
-      errorLikes,
-      errorLoading
-    } = this.state;
+    const { isLoading, article, comments, error } = this.state;
     if (error) {
       return (
         <Error
@@ -132,7 +74,7 @@ export default class IndividualArticlePage extends Component {
           }}
         />
       );
-    } else if (isLoading && isLoadingComment) {
+    } else if (isLoading) {
       return (
         <div>
           <Spinner animation="grow" size="lg" />
@@ -141,22 +83,9 @@ export default class IndividualArticlePage extends Component {
     } else {
       return (
         <div className="article-page-container">
-          <SingleArticle
-            article={article}
-            upVote={this.upVote}
-            downVote={this.downVote}
-            inc_votes={inc_votes}
-            toggleUpVote={toggleUpVote}
-            toggleDownVote={toggleDownVote}
-            errorLikes={errorLikes}
-            errorLoading={errorLoading}
-            handingErrorLoading={this.handingErrorLoading}
-          />
+          <SingleArticle article={article} />
           <PostComment addComment={this.addComment} />
-          <Comments
-            comments={comments}  
-            removeComment={this.removeComment}
-          />
+          <Comments comments={comments} removeComment={this.removeComment} />
         </div>
       );
     }
