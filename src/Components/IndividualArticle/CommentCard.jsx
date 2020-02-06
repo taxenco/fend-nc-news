@@ -49,7 +49,8 @@ export default class CommentCard extends Component {
   };
 
   render() {
-    const { comment, removeComment } = this.props;
+    // console.log(this.props.author);
+    const { comment, removeComment, author } = this.props;
     const {
       errorLoadingComment,
       errorLikesComment,
@@ -80,14 +81,14 @@ export default class CommentCard extends Component {
               <UpVotes voteComment={this.voteComment} toggleLike={toggleLike} />
             </div>
             <div className={styles.bin}>
-              {
+              {author === comment.author && (
                 <GoTrashcan
                   size={30}
                   onClick={() => {
                     removeComment(comment.comment_id);
                   }}
                 />
-              }
+              )}
             </div>
             <div className={styles.dislike}>
               <DownVotes
