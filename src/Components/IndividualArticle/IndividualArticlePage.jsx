@@ -65,6 +65,7 @@ export default class IndividualArticlePage extends Component {
   };
   render() {
     const { isLoading, article, comments, error } = this.state;
+    const { author } = this.props;
     if (error) {
       return (
         <Error
@@ -84,8 +85,12 @@ export default class IndividualArticlePage extends Component {
       return (
         <div className="article-page-container">
           <SingleArticle article={article} />
-          <PostComment addComment={this.addComment} />
-          <Comments comments={comments} removeComment={this.removeComment} />
+          <PostComment addComment={this.addComment} author={author} />
+          <Comments
+            comments={comments}
+            removeComment={this.removeComment}
+            author={author}
+          />
         </div>
       );
     }

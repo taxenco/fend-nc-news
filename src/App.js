@@ -10,16 +10,23 @@ import { Router } from "@reach/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class App extends Component {
+  state = {
+    author: "jessjelly"
+  };
+  changingUser = user => {
+    this.setState({ student: user });
+  };
   render() {
+    const { author } = this.state;
     return (
       <main>
-        <NavBar />
+        <NavBar changingUser={this.changingUser} user={this.state.author} />
         <Header />
         <Router>
           <ArticlePage path="/" />
           <ArticlePage path="/articles" />
           <TopicPage path="/articles/:topic" />
-          <IndividualArticlePage path="/articles/article/:id" />
+          <IndividualArticlePage path="/articles/article/:id" author={author} />
           <Error default error={{ status: "404", data: "Page not found" }} />
         </Router>
         <Footer />

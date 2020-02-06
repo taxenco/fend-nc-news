@@ -10,7 +10,7 @@ import {
 import { FiLogIn } from "react-icons/fi";
 import { FaHome } from "react-icons/fa";
 
-export default function NavBar() {
+export default function NavBar({ changingUser }) {
   return (
     <nav>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -49,23 +49,26 @@ export default function NavBar() {
               variant="dark"
               size="md"
               drop="down"
+              onSelect={event => changingUser(event)}
             >
-              <Dropdown.Item eventKey="4">jessjelly </Dropdown.Item>
+              <Dropdown.Item eventKey="jessjelly">jessjelly </Dropdown.Item>
               <NavDropdown.Divider />
 
-              <Dropdown.Item eventKey="1">tickle122 </Dropdown.Item>
+              <Dropdown.Item eventKey="tickle122">tickle122 </Dropdown.Item>
               <NavDropdown.Divider />
 
-              <Dropdown.Item eventKey="2">grumpy19</Dropdown.Item>
+              <Dropdown.Item eventKey="grumpy19">grumpy19</Dropdown.Item>
               <NavDropdown.Divider />
 
-              <Dropdown.Item eventKey="3">happyamy2016</Dropdown.Item>
+              <Dropdown.Item eventKey="happyamy2016">
+                happyamy2016
+              </Dropdown.Item>
               <NavDropdown.Divider />
 
-              <Dropdown.Item eventKey="4">cooljmessy</Dropdown.Item>
+              <Dropdown.Item eventKey="cooljmessy">cooljmessy</Dropdown.Item>
               <NavDropdown.Divider />
 
-              <Dropdown.Item eventKey="4">weegembump</Dropdown.Item>
+              <Dropdown.Item eventKey="weegembump">weegembump</Dropdown.Item>
               <NavDropdown.Divider />
               <p>
                 {" "}
