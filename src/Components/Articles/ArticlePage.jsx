@@ -3,7 +3,7 @@ import * as api from "../../api";
 import OrderArticles from "./OrderArticles";
 import SortArticles from "./SortArticles";
 import ArticleList from "./ArticleList";
-
+import Error from "../Error/Error";
 import { Spinner } from "react-bootstrap";
 import style from "../../CSS/ArticleList.module.css";
 
@@ -12,7 +12,8 @@ export default class ArticlePage extends Component {
     articles: [],
     isLoading: true,
     order: "asc",
-    sorted_by: "created_at"
+    sorted_by: "created_at",
+    error: null
   };
   fetchArticles = () => {
     const { order, sorted_by } = this.state;
@@ -42,8 +43,15 @@ export default class ArticlePage extends Component {
     }
   }
   render() {
-    const { articles, isLoading } = this.state;
-    if (isLoading) {
+    const { articles, isLoading, error } = this.state;
+    if (error) {
+    return  <Error
+        error={{
+          status: this.state.error.status,
+          data: this.state.error.request.statusText
+        }}
+      />;
+    } else if (isLoading) {
       return (
         <div className={style.spinnerList}>
           <Spinner animation="grow" size="lg" />

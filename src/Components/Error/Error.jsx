@@ -5,7 +5,6 @@ import { FaHome } from "react-icons/fa";
 import { Link } from "@reach/router";
 
 export default function Error({ error }) {
-  console.log(error.data);
   return (
     <div className={styles.error}>
       <img src={errorGif} alt="error" className={styles.picture} />

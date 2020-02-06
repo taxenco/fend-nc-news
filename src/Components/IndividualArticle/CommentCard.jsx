@@ -4,11 +4,17 @@ import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import { GoTrashcan } from "react-icons/go";
 import styles from "../../CSS/CommentCard.module.css";
 import * as api from "../../api";
+const DATE_OPTIONS = {
+  weekday: "short",
+  year: "numeric",
+  month: "short",
+  day: "numeric"
+};
 
 export default class CommentCard extends Component {
   state = {
-    errorLikesComment: null,
-    errorLoadingComment: null,
+    errorLikesComment: false,
+    errorLoadingComment: false,
     inc_votes_comments: 0,
     toggleUpLike: true,
     toggleDownLike: true
@@ -71,7 +77,12 @@ export default class CommentCard extends Component {
         <Toast>
           <Toast.Header closeButton={false}>
             <strong className="mr-auto">{comment.author}</strong>
-            <small>{comment.created_at}</small>
+            <small>
+              {new Date(comment.created_at).toLocaleDateString(
+                "en-US",
+                DATE_OPTIONS
+              )}
+            </small>
           </Toast.Header>
           <Toast.Body>{comment.body}</Toast.Body>
           <div className={styles.votes}>
