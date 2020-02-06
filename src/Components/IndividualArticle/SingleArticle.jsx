@@ -16,22 +16,21 @@ export default class SingleArticle extends Component {
     inc_votes_article: 0,
     toggleLike: null
   };
-  voteComment = (num, disable) => {
+  voteComment = (inc_votes, disable) => {
     const { inc_votes_article } = this.state;
     const { article_id } = this.props.article;
+    console.log(inc_votes);
     this.setState({
-      inc_votes_article: inc_votes_article + num,
+      inc_votes_article: inc_votes_article + inc_votes,
       loadingArticle: true,
       toggleLike: disable
     });
     api
-      .patchCommentById(article_id, num)
+      .patchArticleById(article_id, inc_votes)
       .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes_article: prevState.inc_votes_article + num,
-            loadingArticle: false
-          };
+        this.setState({
+          inc_votes_article: inc_votes_article + inc_votes,
+          loadingArticle: false
         });
       })
       .catch(errorLikes => {

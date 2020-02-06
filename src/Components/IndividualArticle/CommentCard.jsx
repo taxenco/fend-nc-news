@@ -31,11 +31,9 @@ export default class CommentCard extends Component {
     api
       .patchCommentById(comment_id, num)
       .then(() => {
-        this.setState(prevState => {
-          return {
-            inc_votes_comments: prevState.inc_votes_comments + num,
-            errorLoadingComment: false
-          };
+        this.setState({
+          inc_votes_comments: inc_votes_comments + num,
+          errorLoadingComment: false
         });
       })
       .catch(errorLikes => {
