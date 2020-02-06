@@ -5,6 +5,8 @@ import Comments from "./Comments";
 import PostComment from "./PostComment";
 import { Spinner } from "react-bootstrap";
 import Error from "../Error/Error";
+import styles from "../../CSS/IndividualPage.module.css";
+
 export default class IndividualArticlePage extends Component {
   state = {
     article: [],
@@ -56,7 +58,6 @@ export default class IndividualArticlePage extends Component {
   };
 
   componentDidMount() {
-    //
     this.fetchArticleById();
     this.fetchCommentsById();
   }
@@ -77,7 +78,7 @@ export default class IndividualArticlePage extends Component {
       );
     } else if (isLoading) {
       return (
-        <div>
+        <div className={styles.spinner}>
           <Spinner animation="grow" size="lg" />
         </div>
       );

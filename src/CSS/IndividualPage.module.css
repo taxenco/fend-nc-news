@@ -1,5 +1,5 @@
-.welcome {
+.spinner {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  margin: 200px;
 }
