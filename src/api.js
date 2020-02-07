@@ -14,17 +14,18 @@ export const getArticles = (order, sort_by, page) => {
     });
 };
 
-export const getArticleByTopic = (topic, order, sort_by) => {
+export const getArticleByTopic = (topic, order, sort_by, page) => {
   return axios
     .get(`${baseURL}/articles`, {
       params: {
         topic: topic,
         order: order,
-        sort_by: sort_by
+        sort_by: sort_by,
+        page: page
       }
     })
     .then(({ data }) => {
-      return data.articles;
+      return data;
     });
 };
 

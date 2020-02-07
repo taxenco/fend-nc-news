@@ -19,12 +19,10 @@ export default class ArticlePage extends Component {
     page: 1
   };
   fetchArticles = () => {
-    console.log("bite");
     const { order, sorted_by, page } = this.state;
     api
       .getArticles(order, sorted_by, page)
       .then(data => {
-        console.log(page);
         const articles = data.articles;
         const article_count = data.total_count;
         this.setState({
