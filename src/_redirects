@@ -1,4 +1,3 @@
 /articles
-/articles/football
-/articles/coding
-/articles/cooking
+/articles/:topic
+/articles/article/:id
