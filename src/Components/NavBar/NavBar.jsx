@@ -7,6 +7,8 @@ import {
   NavDropdown,
   Button
 } from "react-bootstrap";
+import styles from "../../CSS/NavBar.module.css";
+
 import { FiLogIn } from "react-icons/fi";
 import { FaHome } from "react-icons/fa";
 

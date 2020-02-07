@@ -8,7 +8,12 @@ import DownVotes from "./DownVote";
 import UpVotes from "./UpVotes";
 import { Link } from "@reach/router";
 import * as api from "../../api";
-
+const DATE_OPTIONS = {
+  weekday: "short",
+  year: "numeric",
+  month: "short",
+  day: "numeric"
+};
 export default class SingleArticle extends Component {
   state = {
     errorLikesArticle: false,
@@ -19,7 +24,6 @@ export default class SingleArticle extends Component {
   voteComment = (inc_votes, disable) => {
     const { inc_votes_article } = this.state;
     const { article_id } = this.props.article;
-    console.log(inc_votes);
     this.setState({
       inc_votes_article: inc_votes_article + inc_votes,
       loadingArticle: true,
@@ -91,7 +95,10 @@ export default class SingleArticle extends Component {
             <div className={styles.info}>
               <Card.Text>
                 <strong>Date: </strong>
-                {article.created_at}
+                {new Date(article.created_at).toLocaleDateString(
+                  "en-US",
+                  DATE_OPTIONS
+                )}
               </Card.Text>
             </div>
             <div className={styles.loading}>

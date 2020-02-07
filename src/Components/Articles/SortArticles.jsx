@@ -31,7 +31,7 @@ export default function SortArticles({ handlingSort }) {
         }}
       >
         Votes
-      </Button>
+      </Button>{" "}
     </div>
   );
 }

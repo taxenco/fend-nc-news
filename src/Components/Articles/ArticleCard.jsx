@@ -6,6 +6,12 @@ import { MdCode } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
 import { GoEye } from "react-icons/go";
 import { Link } from "@reach/router";
+const DATE_OPTIONS = {
+  weekday: "short",
+  year: "numeric",
+  month: "short",
+  day: "numeric"
+};
 export default function ArticleCard({ article }) {
   return (
     <section>
@@ -38,7 +44,11 @@ export default function ArticleCard({ article }) {
             </Card.Text>
             <Card.Text>
               {" "}
-              <strong>Date:</strong> {article.created_at}
+              <strong>Date:</strong>
+              {new Date(article.created_at).toLocaleDateString(
+                "en-US",
+                DATE_OPTIONS
+              )}
             </Card.Text>
           </div>
           <div className={styles.button}>
