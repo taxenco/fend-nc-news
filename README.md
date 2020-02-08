@@ -6,13 +6,13 @@ The articles can be seen by three different topics (coding, football and cooking
 
 NC News Front-End:
 
-- Deployed on Netlify: 
-- Github  Link: 
+- Deployed on Netlify: https://beltranc-nc-news.netlify.com/
+- Github Link: https://github.com/taxenco/fend-nc-news
 
 NC News Back-End:
 
-- Hosted on Heroku: 
-- Github Link: 
+- Hosted on Heroku: https://carlosbeltran-nc-news.herokuapp.com/api
+- Github Link:https://github.com/taxenco/be-nc-news
 
 Dependencies:
 
@@ -36,7 +36,7 @@ The information below will allow you to get this application up and running.
 
 - Installation:
 
-* Clone this repository on to your local machine git clone ;
+* Clone this repository on to your local machine git clone https://github.com/taxenco/fend-nc-news ;
 * Navigate into the repository;
 * cd fe-nc-news;
 * Open in your code editor (code .);
