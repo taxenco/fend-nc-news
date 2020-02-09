@@ -8,7 +8,6 @@ import { MdPerson } from "react-icons/md";
 export default function Footer() {
   return (
     <Card>
-      {/* <Card.Header> </Card.Header> */}
       <Card.Body className={styles.footer}>
         <Card.Title className={styles.contact}>
           {" "}
@@ -28,7 +27,7 @@ export default function Footer() {
           </a>
         </Card.Text>
         <Card.Text className={styles.aboutIcon}>
-          <a href="https://taxenco.github.io/portfolio/">
+          <a href="https://taxenco.github.io/carlos_beltran_profile/">
             <MdPerson size={40} />
           </a>
         </Card.Text>
