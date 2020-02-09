@@ -5,6 +5,31 @@
   grid-row-gap: 30px;
 }
 
+@media only screen and (max-width: 1389px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 30px;
+    grid-row-gap: 30px;
+  }
+}
+@media only screen and (max-width: 1077px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px;
+    grid-row-gap: 30px;
+  }
+}
+@media only screen and (max-width: 647px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    width: 13rem;
+  }
+}
+
 .header {
   display: flex;
   justify-content: center;

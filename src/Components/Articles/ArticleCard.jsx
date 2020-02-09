@@ -14,9 +14,9 @@ const DATE_OPTIONS = {
 };
 export default function ArticleCard({ article }) {
   return (
-    <section>
-      <ol>
-        <Card bg="light" style={{ width: "18rem" }}>
+    <div>
+      <ol className={styles.card1}>
+        <Card bg="light" style={{ width: "13rem", }}>
           <Card.Header className={styles.header}>
             <strong>
               {article.topic === "football" ? (
@@ -58,6 +58,6 @@ export default function ArticleCard({ article }) {
           </div>
         </Card>
       </ol>
-    </section>
+    </div>
   );
 }

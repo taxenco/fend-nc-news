@@ -7,6 +7,8 @@ import TopicPage from "./Components/Topic/TopicPage";
 import IndividualArticlePage from "./Components/IndividualArticle/IndividualArticlePage";
 import Error from "./Components/Error/Error";
 import Welcome from "./Components/Welcome/Welcome";
+import styles from "./CSS/App.module.css";
+
 import { Router } from "@reach/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -20,7 +22,7 @@ export default class App extends Component {
   render() {
     const { author } = this.state;
     return (
-      <main>
+      <body classNam={styles.app}>
         <NavBar changingUser={this.changingUser} user={this.state.author} />
         <Header />
         <Welcome author={author} />
@@ -32,7 +34,7 @@ export default class App extends Component {
           <Error default error={{ status: "404", data: "Page not found" }} />
         </Router>
         <Footer />
-      </main>
+      </body>
     );
   }
 }

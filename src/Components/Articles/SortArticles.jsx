@@ -1,37 +1,36 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 import style from "../../CSS/ArticleList.module.css";
 
 export default function SortArticles({ handlingSort }) {
   return (
     <div className={style.SortButtons}>
-      <Button
-        variant="outline-dark"
-        id="created_at"
-        onClick={event => {
-          handlingSort(event.target.id);
-        }}
-      >
-        Date{" "}
-      </Button>
-      <Button
-        variant="outline-dark"
-        id="comment_count"
-        onClick={event => {
-          handlingSort(event.target.id);
-        }}
-      >
-        Number of comments
-      </Button>
-      <Button
-        variant="outline-dark"
-        id="votes"
-        onClick={event => {
-          handlingSort(event.target.id);
-        }}
-      >
-        Votes
-      </Button>{" "}
+      <DropdownButton id="dropdown-basic-button" title="Sorting" drop="bottom">
+        <Dropdown.Item
+          id="created_at"
+          onClick={event => {
+            handlingSort(event.target.id);
+          }}
+        >
+          Date
+        </Dropdown.Item>
+        <Dropdown.Item
+          id="comment_count"
+          onClick={event => {
+            handlingSort(event.target.id);
+          }}
+        >
+          Number of comments
+        </Dropdown.Item>
+        <Dropdown.Item
+          id="votes"
+          onClick={event => {
+            handlingSort(event.target.id);
+          }}
+        >
+          Votes
+        </Dropdown.Item>
+      </DropdownButton>
     </div>
   );
 }

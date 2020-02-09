@@ -7,14 +7,14 @@ import {
   NavDropdown,
   Button
 } from "react-bootstrap";
-// import styles from "../../CSS/NavBar.module.css";
+import styles from "../../CSS/NavBar.module.css";
 
 import { FiLogIn } from "react-icons/fi";
 import { FaHome } from "react-icons/fa";
 
 export default function NavBar({ changingUser }) {
   return (
-    <nav>
+    <nav class={styles.nav}>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand>NC-NEWS</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
