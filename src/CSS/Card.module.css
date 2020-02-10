@@ -21,14 +21,64 @@
     grid-row-gap: 30px;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin:15%;
+    grid-row-gap: 30px;
+  }
+}
+
+
 @media only screen and (max-width: 647px) {
   .card {
     display: grid;
     grid-template-columns: 1fr;
     text-align: center;
+    margin-left: -0%;
     width: 13rem;
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-left: 5%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-left: 0%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-left: -1%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-left: -7%;
+  }
+}
+
+
 
 .header {
   display: flex;

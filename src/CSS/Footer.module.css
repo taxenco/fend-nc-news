@@ -3,6 +3,13 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+@media only screen and (max-width: 320px) {
+  .footer {
+    /* margin-left: -0%; */
+    width: 350px;
+  }
+}
+
 .contact {
   display: flex;
   justify-content: center;
@@ -35,4 +42,3 @@
   justify-content: space-around;
   padding: 30px;
 }
-
