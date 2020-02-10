@@ -19,7 +19,6 @@ export default class PostComment extends Component {
     this.setState({ comment: "" });
   };
   render() {
-    console.log(this.props.author);
     return (
       <div className={styles.form}>
         <form onSubmit={this.handleSubmit}>

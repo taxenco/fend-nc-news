@@ -6,16 +6,14 @@
 
 @media only screen and (max-width: 360px) {
   .header {
-    /* display: flex;
-    justify-content: center; */
+
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 320px) {
   .header {
-    /* display: flex;
-    justify-content: center; */
+  
     width: 100%;
   }
 }
