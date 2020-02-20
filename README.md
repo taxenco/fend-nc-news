@@ -40,5 +40,7 @@ The information below will allow you to get this application up and running.
 * Navigate into the repository;
 * cd fe-nc-news;
 * Open in your code editor (code .);
-* Install dependencies (npm install);
-* Start the application to run on your default browser (npm start);
+* Install dependencies (`npm install`);
+* Start the application to run on your default browser (`npm start`);
+
+  ** Note: To run the project locally,you must have node installed
